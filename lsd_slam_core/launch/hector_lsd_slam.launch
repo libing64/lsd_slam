@@ -1,0 +1,14 @@
+<launch>
+	<node pkg="lsd_slam_core" type="live_slam" name="lsd_slam" >	
+	    <remap from="/image" to="/downward_cam/camera/image"/>
+	    <remap from="/camera_info" to="/downward_cam/camera/camera_info"/>
+	</node>
+
+	<node pkg="lsd_slam_viewer" type="viewer" name="viewer" />	
+
+   <!-- <arg name="bagfile" default="/home/libing/rosbag/optical_flow/2016-02-29-21-55-47.bag" /> -->
+   <arg name="bagfile" default="/home/libing/rosbag/optical_flow/2016-03-24-17-04-08.bag" />
+   <!-- Play the bagfile -->
+   <node pkg="rosbag" type="play" name="rosbag" args="$(arg bagfile)" />
+	
+</launch>

@@ -1,9 +1,14 @@
 <launch>
 	<node pkg="lsd_slam_core" type="live_slam" name="lsd_slam" >	
-	    <remap from="/image" to="/downward_cam/camera/image"/>
-	    <remap from="/camera_info" to="/downward_cam/camera/camera_info"/>
+	    <remap from="/image" to="/image_raw"/>
+	    <remap from="/camera_info" to="/camera_info"/>
 	</node>
 
 	<node pkg="lsd_slam_viewer" type="viewer" name="viewer" />	
+
+	   <!-- <arg name="bagfile" default="/home/libing/rosbag/stereo_data/kitti_03.bag" /> -->
+   <arg name="bagfile" default="/home/libing/rosbag/lsd_slam/LSD_room.bag" />
+   <!-- Play the bagfile -->
+   <node pkg="rosbag" type="play" name="rosbag" args="$(arg bagfile)" />
 	
 </launch>
